@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using VisualNovelApi.Context;
 using VisualNovelApi.Model;
 
 namespace VisualNovelApi.Controllers
@@ -20,13 +19,13 @@ namespace VisualNovelApi.Controllers
         //     _dbContext = dbContext;
         // }
 
-        [HttpGet("")]
-        public ActionResult<IEnumerable<Novel>> GetNovels()
-        {
-            // var novels = _dbContext.Novels.ToList();
-            // return novels;
-            return null;
-        }
+        // [HttpGet("")]
+        // public ActionResult<IEnumerable<Novel>> GetNovels()
+        // {
+        //     // var novels = _dbContext.Novels.ToList();
+        //     // return novels;
+        //     return null;
+        // }
 
         // [HttpGet("{id}")]
         // public ActionResult<Novel> GetNovelById(int id)

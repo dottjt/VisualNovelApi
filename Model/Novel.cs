@@ -5,13 +5,13 @@ namespace VisualNovelApi.Model;
 
 public class Novel
 {
-    [Key]
     public int Id { get; set; }
 
-    [Required]
-    public string Title { get; set; } = default!;
+    public string Url { get; set; }
 
-    public string CoverUrl { get; set; } = default!;
+    // public string Title { get; set; } = "";
+
+    // public string CoverUrl { get; set; } = "";
 
     // public List<Chapter> Chapters { get; set; } = default!;
 }
