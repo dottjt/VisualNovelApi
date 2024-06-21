@@ -6,53 +6,71 @@ namespace VisualNovelApi.Model;
 public class Novel
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 
-    public List<Chapter> Chapters { get; set; } = default!;
-}
-
-public class Chapter
-{
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Id { get; set; }
-    
-    public List<Slide> Slides { get; set; } = default!;
-}
-
-public class Slide
-{
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Id { get; set; }
-    
     [Required]
-    public int SlideOrder { get; set; }
-    
-    [Required]
-    public string SlideText { get; set; } = default!;
+    public string Title { get; set; } = default!;
 
-    public Character Character { get; set; } = default!;
+    public string CoverUrl { get; set; } = default!;
+
+    // public List<Chapter> Chapters { get; set; } = default!;
 }
 
-public class Character
-{
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Id { get; set; }
-    
-    public string Name { get; set; } = default!;
-    
-    public CharacterVariation CharacterVariation { get; set; } = default!;
-}
+// public class Chapter
+// {
+//     [Key]
+//     public int Id { get; set; }
+
+//     [Required]
+//     public string Title { get; set; } = default!;
+
+//     // public List<Scene> Scenes { get; set; } = default!;
+// }
+
+// public class Scene
+// {
+//     [Key]
+//     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+//     public Guid Id { get; set; }
+
+//     public List<Slide> Slides { get; set; } = default!;
+// }
+
+// public class Slide
+// {
+//     [Key]
+//     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+//     public Guid Id { get; set; }
+
+//     [Required]
+//     public int SlideOrder { get; set; }
+
+//     [Required]
+//     public string SlideText { get; set; } = default!;
+
+//     public Character Character { get; set; } = default!;
+// }
+
+// public class Character
+// {
+//     [Key]
+//     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+//     public Guid Id { get; set; }
+
+//     [Required]
+//     public string Name { get; set; } = default!;
+
+//     public CharacterVariation CharacterVariation { get; set; } = default!;
+// }
 
 
-public class CharacterVariation
-{
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Id { get; set; }
+// public class CharacterVariation
+// {
+//     [Key]
+//     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+//     public Guid Id { get; set; }
 
-    public string AvatarUrl { get; set; } = default!;
-}
+//     public string AvatarUrl { get; set; } = default!;
+
+//     public string CharacterPosition { get; set; } = default!;
+// }
