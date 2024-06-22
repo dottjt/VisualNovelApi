@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using VisualNovelApi.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,8 @@ const string localDevelopmentUrl = "http://localhost:4200";
 // Add services to the container.
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<NovelDbContext>();
+builder.Services.AddDbContext<NovelDbContext>(
+    options => options.UseSqlite(builder.Configuration.GetConnectionString("DevelopmentDatabase")));
 
 builder.Services.AddCors(options =>
 {
