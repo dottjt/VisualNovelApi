@@ -21,16 +21,15 @@ Content-Type: application/json
     "coverUrl": "hello"
 }
 
-# ### UPDATE
+### UPDATE
 
-# PUT {{VisualNovelApi_HostAddress}}/api/novels
-# Content-Type: application/json
+PUT {{VisualNovelApi_HostAddress}}/api/novels
+Content-Type: application/json
 
-# {
-#     "title": "2023-05-10",
-#     "coverUrl": 30,
-#     "summary": "Warm"
-# }
+{
+    "id": "64850efe-3659-47db-876f-ed0b46682b94",
+    "title": "yo"
+}
 
 ### DELETE
 

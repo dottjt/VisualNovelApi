@@ -46,13 +46,13 @@ public class NovelController : ControllerBase
         return Ok();
     }
 
-    // [HttpPut("{id:int}")]
-    // public IActionResult PutNovel(int id, Novel novel)
-    // {
-    //     dbContext.Novels.Update(novel);
-    //     dbContext.SaveChanges();
-    //     return Ok();
-    // }
+    [HttpPut]
+    public IActionResult PutNovel(Novel novel)
+    {
+        _dbContext.Novels.Update(novel);
+        _dbContext.SaveChanges();
+        return Ok();
+    }
 
     [HttpDelete("{id}")]
     public ActionResult<Novel> DeleteNovelById(string id)
