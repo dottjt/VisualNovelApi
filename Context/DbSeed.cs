@@ -6,32 +6,35 @@ public static class ModelBuilderExtensions
 {
     public static void Seed(this ModelBuilder modelBuilder)
     {
-        var clanndTwoNovelId = 1;
+        var clannadTwoNovelId = Guid.NewGuid();
+        var theMysteryManNovelId = Guid.NewGuid();
         modelBuilder.Entity<Novel>().HasData(
             new Novel
             {
-                Id = clanndTwoNovelId,
+                Id = clannadTwoNovelId,
                 Title = "Clannad 2",
             },
             new Novel
             {
-                Id = 2,
+                Id = theMysteryManNovelId,
                 Title = "The Mystery Man",
             }
         );
 
+        var chapterOneChapterId = Guid.NewGuid();
+        var chapterTwoChapterId = Guid.NewGuid();
         modelBuilder.Entity<Chapter>().HasData(
             new Chapter
             {
-                Id = 1,
+                Id = chapterOneChapterId,
                 Title = "Chapter 1 - The girl dies",
-                NovelId = clanndTwoNovelId,
+                NovelId = clannadTwoNovelId,
             },
             new Chapter
             {
-                Id = 2,
+                Id = chapterTwoChapterId,
                 Title = "Chapter 2 - The girl lives on!",
-                NovelId = clanndTwoNovelId,
+                NovelId = clannadTwoNovelId,
             }
         );
     }

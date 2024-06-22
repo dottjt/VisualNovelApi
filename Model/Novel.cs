@@ -6,7 +6,7 @@ namespace VisualNovelApi.Model;
 public class Novel
 {
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     [Required]
     [Column(TypeName = "varchar(200)")]
@@ -21,14 +21,14 @@ public class Novel
 public class Chapter
 {
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     [Required]
     [Column(TypeName = "varchar(200)")]
     [MaxLength(200)]
     public required string Title { get; set; }
 
-    public int NovelId { get; set; }
+    public Guid NovelId { get; set; }
     public Novel? Novel { get; set; }
 
     // public List<Scene> Scenes { get; set; } = default!;
