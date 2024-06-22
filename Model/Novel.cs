@@ -5,27 +5,35 @@ namespace VisualNovelApi.Model;
 
 public class Novel
 {
+    [Key]
     public int Id { get; set; }
 
-    public string Url { get; set; }
+    [Required]
+    [Column(TypeName = "varchar(200)")]
+    [MaxLength(200)]
+    public required string Title { get; set; }
 
-    // public string Title { get; set; } = "";
+    [Required]
+    public required string CoverUrl { get; set; }
 
-    // public string CoverUrl { get; set; } = "";
-
-    // public List<Chapter> Chapters { get; set; } = default!;
+    public List<Chapter>? Chapters { get; set; }
 }
 
-// public class Chapter
-// {
-//     [Key]
-//     public int Id { get; set; }
+public class Chapter
+{
+    [Key]
+    public int Id { get; set; }
 
-//     [Required]
-//     public string Title { get; set; } = default!;
+    [Required]
+    [Column(TypeName = "varchar(200)")]
+    [MaxLength(200)]
+    public required string Title { get; set; }
 
-//     // public List<Scene> Scenes { get; set; } = default!;
-// }
+    public int NovelId { get; set; }
+    public Novel? Novel { get; set; }
+
+    // public List<Scene> Scenes { get; set; } = default!;
+}
 
 // public class Scene
 // {
@@ -60,7 +68,7 @@ public class Novel
 //     [Required]
 //     public string Name { get; set; } = default!;
 
-//     public CharacterVariation CharacterVariation { get; set; } = default!;
+//     // public CharacterVariation CharacterVariation { get; set; } = default!;
 // }
 
 

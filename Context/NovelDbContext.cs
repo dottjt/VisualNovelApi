@@ -1,36 +1,16 @@
 using Microsoft.EntityFrameworkCore;
-
-namespace VisualNovelApi.Context;
-
-public class NovelDbContext : DbContext {
-    public NovelDbContext() { }
-    public NovelDbContext(DbContextOptions<NovelDbContext> options) : base (options) { }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlite("Data Source=databse.dat");
-    }
-
-    // public DbSet<Novel> Novels { get; set; }
-}
-
+using VisualNovelApi.Model;
 
 namespace VisualNovelApi.Context
 {
     public class NovelContext : DbContext
     {
-        public NovelContext() : base() {}
-
-        // protected readonly IConfiguration Configuration;
-
-        // public NovelContext(IConfiguration configuration)
-        // {
-        //     Configuration = configuration;
-        // }
+        public NovelContext()
+        {
+        }
 
         public DbSet<Novel> Novels { get; set; }
-
-        // public DbSet<Chapter> Chapters { get; set; }
+        public DbSet<Chapter> Chapters { get; set; }
         // public DbSet<Scene> Scenes { get; set; }
         // public DbSet<Slide> Slides { get; set; }
         // public DbSet<Character> Characters { get; set; }
@@ -38,20 +18,16 @@ namespace VisualNovelApi.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=databse.dat");
-            // optionsBuilder.UseNpgsql(Configuration.GetConnectionString("WebApiDatabase"));
+            optionsBuilder.UseSqlite($"Data Source=devDatabase.db");
         }
 
-        // protected override void OnModelCreating(ModelBuilder modelBuilder)
-        // {
-        //     modelBuilder.HasDefaultSchema("visual_novel");
-        //     // modelBuilder.Seed();
-        // }
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema("visual_novel");
+            modelBuilder.Seed();
+        }
     }
 }
-
-
 
 // using Microsoft.EntityFrameworkCore;
 // using System;

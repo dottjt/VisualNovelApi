@@ -35,11 +35,11 @@ namespace VisualNovelApi.Controllers
         //     return null;
         // }
 
-        // [HttpPost("")]
-        // public ActionResult<Novel> PostNovel(Novel model)
-        // {
-        //     return null;
-        // }
+        [HttpPost("")]
+        public ActionResult<Novel> PostNovel(Novel model)
+        {
+            return null;
+        }
 
         // [HttpPut("{id}")]
         // public IActionResult PutNovel(int id, Novel model)
