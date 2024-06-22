@@ -1,11 +1,11 @@
 @VisualNovelApi_HostAddress = http://localhost:5235
 
-GET {{VisualNovelApi_HostAddress}}/weatherforecast/
-Accept: application/json
+GET {{VisualNovelApi_HostAddress}}/api/novels
+Content-Type: application/json
 
 ###
 
-POST {{VisualNovelApi_HostAddress}}/weatherforecast/
+GET {{VisualNovelApi_HostAddress}}/api/novels?id=1
 Content-Type: application/json
 
 {
@@ -13,5 +13,3 @@ Content-Type: application/json
     "coverUrl": 30,
     "summary": "Warm"
 }
-
-###

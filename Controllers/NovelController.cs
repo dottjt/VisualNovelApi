@@ -44,7 +44,7 @@ namespace VisualNovelApi.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public IActionResult PutNovel(int id, Novel novel)
+        public IActionResult PutNovel(Novel novel)
         {
             dbContext.Novels.Update(novel);
             dbContext.SaveChanges();
