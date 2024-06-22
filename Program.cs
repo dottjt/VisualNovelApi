@@ -24,9 +24,8 @@ builder.Services.AddCors(options =>
         });
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-// builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddEndpointsApiExplorer();
 // builder.Services.AddSwaggerGen();
-
 builder.Services.AddSwaggerDocument();
 
 var app = builder.Build();
@@ -35,19 +34,22 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
+
+    // Swashbuckle
     // app.UseSwagger();
     // app.UseSwaggerUI();
+
+    // NSwag
+    app.UseOpenApi();
+    app.UseSwaggerUi();
 }
+
+app.UseHttpsRedirection();
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
-app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
-app.UseOpenApi();
-app.UseSwaggerUi();
 
 if (app.Environment.IsDevelopment())
 {
