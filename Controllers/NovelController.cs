@@ -16,33 +16,35 @@ public class NovelController : ControllerBase
         this._dbContext = dbContext;
     }
 
-    [HttpGet("")]
+    [HttpGet]
     public ActionResult<IEnumerable<Novel>> GetNovels()
     {
-        // Console.WriteLine(_dbContext);
-        // var novels = _dbContext.Novels.ToList();
-        return Ok();
+        using (var context = new NovelDbContext()) {
+            var novels = _dbContext.Novels.ToList();
+            return Ok(novels);
+        }
     }
 
-    // [HttpGet("{id:int}")]
-    // public ActionResult<Novel> GetNovelById(int id)
-    // {
-    //     var novel = dbContext.Novels.Where(x => x.Id.Equals(id)).FirstOrDefault();
+    [HttpGet("{id}")]
+    public ActionResult<Novel> GetNovelById(string id)
+    {
+        Console.WriteLine("here" + id);
+        var novel = _dbContext.Novels.Where(x => x.Id.Equals(Guid.Parse(id))).SingleOrDefault();
 
-    //     if (novel != null) {
-    //         return Ok(novel);
-    //     }
-    //     return NoContent();
-    // }
+        if (novel != null) {
+            return Ok(novel);
+        }
+        return NoContent();
+    }
 
-    // [HttpPost("")]
-    // public ActionResult<Novel?> CreateNovel(Novel novel)
-    // {
-    //     Console.WriteLine(novel);
-    //     dbContext.Novels.Add(novel);
-    //     dbContext.SaveChanges();
-    //     return Ok();
-    // }
+    [HttpPost]
+    // [ValidateAntiForgeryToken] doesn't quite work, not sure why.
+    public ActionResult CreateNovel(Novel novel)
+    {
+        _dbContext.Novels.Add(novel);
+        _dbContext.SaveChanges();
+        return Ok();
+    }
 
     // [HttpPut("{id:int}")]
     // public IActionResult PutNovel(int id, Novel novel)
@@ -52,15 +54,15 @@ public class NovelController : ControllerBase
     //     return Ok();
     // }
 
-    // [HttpDelete("{id:int}")]
-    // public ActionResult<Novel> DeleteNovelById(int id)
-    // {
-    //     var novel = dbContext.Novels.Where(a => a.Id.Equals(id)).FirstOrDefault();
-    //     if (novel != null) {
-    //         dbContext.Novels.Remove(novel);
-    //         dbContext.SaveChanges();
-    //         return Ok();
-    //     }
-    //     return NotFound();
-    // }
+    [HttpDelete("{id}")]
+    public ActionResult<Novel> DeleteNovelById(string id)
+    {
+        var novel = _dbContext.Novels.Where(a => a.Id.Equals(Guid.Parse(id))).FirstOrDefault();
+        if (novel != null) {
+            _dbContext.Novels.Remove(novel);
+            _dbContext.SaveChanges();
+            return Ok();
+        }
+        return NotFound();
+    }
 }

@@ -12,9 +12,8 @@ public class NovelDbContext : DbContext
     // public DbSet<Character> Characters { get; set; }
     // public DbSet<CharacterVariation> CharacterVariations { get; set; }
 
-    // public NovelDbContext() : base() {}
-
-    // public NovelDbContext(DbContextOptions<NovelDbContext> options) : base(options) {}
+    public NovelDbContext() : base() {}
+    public NovelDbContext(DbContextOptions<NovelDbContext> options) : base(options) {}
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

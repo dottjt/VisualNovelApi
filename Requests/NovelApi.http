@@ -16,29 +16,23 @@ POST {{VisualNovelApi_HostAddress}}/api/novels
 Content-Type: application/json
 
 {
+    "id": "64850efe-3659-47db-876f-ed0b46682b94",
     "title": "2023-05-10",
-    "coverUrl": 30,
-    "summary": "Warm"
+    "coverUrl": "hello"
 }
 
-### UPDATE
+# ### UPDATE
 
-PUT {{VisualNovelApi_HostAddress}}/api/novels
-Content-Type: application/json
+# PUT {{VisualNovelApi_HostAddress}}/api/novels
+# Content-Type: application/json
 
-{
-    "title": "2023-05-10",
-    "coverUrl": 30,
-    "summary": "Warm"
-}
+# {
+#     "title": "2023-05-10",
+#     "coverUrl": 30,
+#     "summary": "Warm"
+# }
 
 ### DELETE
 
-DELETE {{VisualNovelApi_HostAddress}}/api/novels?id=1
+DELETE {{VisualNovelApi_HostAddress}}/api/novels/64850efe-3659-47db-876f-ed0b46682b94
 Content-Type: application/json
-
-{
-    "title": "2023-05-10",
-    "coverUrl": 30,
-    "summary": "Warm"
-}

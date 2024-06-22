@@ -1,11 +1,14 @@
+using VisualNovelApi.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 const string allowDevelopmentCorsOriginsPolicy = "AllowDevelopmentSpecificOrigins";
 const string localDevelopmentUrl = "http://localhost:4200";
 
 // Add services to the container.
-
 builder.Services.AddControllers();
+
+builder.Services.AddDbContext<NovelDbContext>();
 
 builder.Services.AddCors(options =>
 {
