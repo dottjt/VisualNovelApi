@@ -10,7 +10,7 @@ using VisualNovelApi.Context;
 
 namespace VisualNovelApi.Migrations
 {
-    [DbContext(typeof(NovelContext))]
+    [DbContext(typeof(NovelDbContext))]
     [Migration("20240622043249_InitialNovelAndChapter")]
     partial class InitialNovelAndChapter
     {

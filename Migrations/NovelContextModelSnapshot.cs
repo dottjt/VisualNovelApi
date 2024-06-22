@@ -9,8 +9,8 @@ using VisualNovelApi.Context;
 
 namespace VisualNovelApi.Migrations
 {
-    [DbContext(typeof(NovelContext))]
-    partial class NovelContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(NovelDbContext))]
+    partial class NovelDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
