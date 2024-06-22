@@ -13,8 +13,7 @@ public class Novel
     [MaxLength(200)]
     public required string Title { get; set; }
 
-    [Required]
-    public required string CoverUrl { get; set; }
+    public string? CoverUrl { get; set; }
 
     public List<Chapter>? Chapters { get; set; }
 }

@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using VisualNovelApi.Context;
 using VisualNovelApi.Model;
 
 namespace VisualNovelApi.Controllers
@@ -12,45 +9,58 @@ namespace VisualNovelApi.Controllers
     [Route("api/novels")]
     public class NovelController : ControllerBase
     {
-        // private readonly NovelContext _dbContext;
+        private readonly NovelContext dbContext;
 
-        // public NovelController(NovelContext dbContext)
-        // {
-        //     _dbContext = dbContext;
-        // }
-
-        // [HttpGet("")]
-        // public ActionResult<IEnumerable<Novel>> GetNovels()
-        // {
-        //     // var novels = _dbContext.Novels.ToList();
-        //     // return novels;
-        //     return null;
-        // }
-
-        // [HttpGet("{id}")]
-        // public ActionResult<Novel> GetNovelById(int id)
-        // {
-        //     // var novels = _dbContext.Novels.ToList();
-        //     // return novels;
-        //     return null;
-        // }
-
-        [HttpPost("")]
-        public ActionResult<Novel> PostNovel(Novel model)
+        public NovelController(NovelContext dbContext)
         {
-            return null;
+            this.dbContext = dbContext;
         }
 
-        // [HttpPut("{id}")]
-        // public IActionResult PutNovel(int id, Novel model)
-        // {
-        //     return NoContent();
-        // }
+        [HttpGet("")]
+        public ActionResult<IEnumerable<Novel>> GetNovels()
+        {
+            var novels = dbContext.Novels.ToList();
+            return Ok(novels);
+        }
 
-        // [HttpDelete("{id}")]
-        // public ActionResult<Novel> DeleteTModelById(int id)
-        // {
-        //     return null;
-        // }
+        [HttpGet("{id:int}")]
+        public ActionResult<Novel> GetNovelById(int id)
+        {
+            var novel = dbContext.Novels.Where(x => x.Id.Equals(id)).FirstOrDefault();
+
+            if (novel != null) {
+                return Ok(novel);
+            }
+            return NoContent();
+        }
+
+        [HttpPost("")]
+        public ActionResult<Novel?> CreateNovel(Novel novel)
+        {
+            Console.WriteLine(novel);
+            dbContext.Novels.Add(novel);
+            dbContext.SaveChanges();
+            return Ok();
+        }
+
+        [HttpPut("{id:int}")]
+        public IActionResult PutNovel(int id, Novel novel)
+        {
+            dbContext.Novels.Update(novel);
+            dbContext.SaveChanges();
+            return Ok();
+        }
+
+        [HttpDelete("{id:int}")]
+        public ActionResult<Novel> DeleteNovelById(int id)
+        {
+            var novel = dbContext.Novels.Where(a => a.Id == id).FirstOrDefault();
+            if (novel != null) {
+                dbContext.Novels.Remove(novel);
+                dbContext.SaveChanges();
+                return Ok();
+            }
+            return NotFound();
+        }
     }
 }

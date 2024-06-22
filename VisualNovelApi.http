@@ -4,3 +4,14 @@ GET {{VisualNovelApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+POST {{VisualNovelApi_HostAddress}}/weatherforecast/
+Content-Type: application/json
+
+{
+    "title": "2023-05-10",
+    "coverUrl": 30,
+    "summary": "Warm"
+}
+
+###
