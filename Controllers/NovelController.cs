@@ -54,7 +54,7 @@ namespace VisualNovelApi.Controllers
         [HttpDelete("{id:int}")]
         public ActionResult<Novel> DeleteNovelById(int id)
         {
-            var novel = dbContext.Novels.Where(a => a.Id == id).FirstOrDefault();
+            var novel = dbContext.Novels.Where(a => a.Id.Equals(id)).FirstOrDefault();
             if (novel != null) {
                 dbContext.Novels.Remove(novel);
                 dbContext.SaveChanges();
