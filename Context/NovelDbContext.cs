@@ -15,10 +15,11 @@ public class NovelDbContext : DbContext
     public NovelDbContext() : base() {}
     public NovelDbContext(DbContextOptions<NovelDbContext> options) : base(options) {}
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlite("Data Source=Data/devDatabase.db");
-    }
+    // NOTE: No longer needed
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    // {
+    //     optionsBuilder.UseSqlite("Data Source=Data/devDatabase.db");
+    // }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -15,6 +15,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.6" />
     <PackageReference Include="NSwag.AspNetCore" Version="14.0.8" />
+    <PackageReference Include="NSwag.Generation.AspNetCore" Version="14.0.8" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="6.6.2" />
   </ItemGroup>

@@ -16,7 +16,7 @@ POST {{VisualNovelApi_HostAddress}}/api/novels
 Content-Type: application/json
 
 {
-    "id": "64850efe-3659-47db-876f-ed0b46682b94",
+    # "id": "64850efe-3659-47db-876f-ed0b46682b94",
     "title": "2023-05-10",
     "coverUrl": "hello"
 }

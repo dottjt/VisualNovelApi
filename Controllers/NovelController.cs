@@ -7,13 +7,18 @@ namespace VisualNovelApi.Controllers;
 
 [ApiController]
 [Route("api/novels")]
+[Produces("application/json")]
 public class NovelController : ControllerBase
 {
+
+    // Read through model binding to better understand how information is passed between controllers
+    // https://learn.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-8.0
+
     private readonly NovelDbContext _dbContext;
 
     public NovelController(NovelDbContext dbContext)
     {
-        this._dbContext = dbContext;
+        _dbContext = dbContext;
     }
 
     [HttpGet]
@@ -38,7 +43,7 @@ public class NovelController : ControllerBase
     }
 
     [HttpPost]
-    // [ValidateAntiForgeryToken] doesn't quite work, not sure why.
+    [ValidateAntiForgeryToken]
     public ActionResult CreateNovel(Novel novel)
     {
         _dbContext.Novels.Add(novel);

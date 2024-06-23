@@ -42,12 +42,15 @@ if (app.Environment.IsDevelopment())
     // NSwag
     app.UseOpenApi();
     app.UseSwaggerUi();
+} else {
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 
-app.UseDefaultFiles();
-app.UseStaticFiles();
+// Not needed because we're not serving anything.
+// app.UseDefaultFiles();
+// app.UseStaticFiles();
 
 app.UseAuthorization();
 
